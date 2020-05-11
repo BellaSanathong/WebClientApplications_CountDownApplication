@@ -7,23 +7,23 @@ $( document ).ready(function() {
 
         // make sure task and due date are entered
         if (event.length == 0 || dt.length == 0) {
-            message.text( "Please enter both a name and a date." );
+            message.text( "You must enter both a name and a date." );
             return;
         }  
         // make sure due date string has slashes and a 4-digit year
         if (dt.indexOf("/") == -1) { 
-            message.text( "Please enter the date in MM/DD/YYYY format." );
+            message.text( "You must enter the date in MM/DD/YYYY format." );
             return;
         } 
         var year = dt.substring(dt.length - 4); 
         if (isNaN(year)) {
-            message.text( "Please enter the date in MM/DD/YYYY format." );
+            message.text( "You must enter the date in MM/DD/YYYY format." );
             return;
         }     
         // convert due date string to Date object and check for validity
         var date = new Date(dt);
         if (date == "Invalid Date") {
-            message.text( "Please enter the date in MM/DD/YYYY format." );
+            message.text( "You must enter the date in MM/DD/YYYY format." );
             return;
         }
 
@@ -35,13 +35,13 @@ $( document ).ready(function() {
 
         // create and display message 
         if (days == 0) {
-            message.text( "Hooray! Today is ".concat(event.toLowerCase(), 
+            message.text( "Great! Today is ".concat(event.toLowerCase(), 
                 "!\n(", date.toDateString(), ")") );
         }
         if (days < 0) {
             // capitalize event
             event = event.substring(0,1).toUpperCase() + event.substring(1); 
-            message.text( event.concat(" happened ", Math.abs(days), 
+            message.text( event.concat(" occured ", Math.abs(days), 
                 " day(s) ago. \n (", date.toDateString(), ")") );       
         }
         if (days > 0) {
